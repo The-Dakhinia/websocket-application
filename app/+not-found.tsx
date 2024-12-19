@@ -29,6 +29,13 @@ export default function ChatApp() {
       setMessages((prevMessages) => [...prevMessages, msg]);
     });
 
+    newSocket.on("connect", ()=>{
+      console.log("connected");
+    });
+    newSocket.on("disconnect", ()=>{
+      console.log("disconnected");
+    });
+
     // Clean up the socket connection on unmount
     return () => {
       newSocket.disconnect(); // Correct way to disconnect
